@@ -3,5 +3,6 @@
     "appBarTitle": "Funny Bones",
     "@appBarTitle": {
         "description": "Some description"
-    }
+    },
+    "addNewJoke": "Add a new joke"
 }

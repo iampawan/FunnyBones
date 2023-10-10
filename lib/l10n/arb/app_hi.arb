@@ -3,5 +3,6 @@
     "appBarTitle": "फन्नी बोन्स",
     "@appBarTitle": {
         "description": "कुछ जानकारी"
-    }
+    },
+    "addNewJoke": "नया मज़ाक जोड़ें"
 }

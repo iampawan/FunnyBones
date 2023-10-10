@@ -82,6 +82,13 @@ class _JokeScreenState extends State<JokeScreen> {
           _jokeBloc,
         ), // Pass the list of jokes to the JokeList widget
       ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          _jokeBloc.add(const FetchJokeEvent());
+        },
+        icon: const Icon(Icons.add),
+        label: Text(l10n.addNewJoke),
+      ),
     );
   }
 }
