@@ -50,7 +50,7 @@ class _JokeScreenState extends State<JokeScreen> {
 
   // A method to start fetching jokes periodically based on given time
   void _startFetchingJokesPeriodically() {
-    final oneMinute = Duration(seconds: Constants.minutesToFetchJoke);
+    final oneMinute = Duration(minutes: Constants.minutesToFetchJoke);
     _timer = Timer.periodic(oneMinute, (_) {
       _jokeBloc.add(const FetchJokeEvent());
     });

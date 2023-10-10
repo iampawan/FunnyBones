@@ -11,5 +11,5 @@ class Constants {
   static const baseUrl = 'https://geek-jokes.sameerkumar.website';
 
   // Time in minutes to fetch a new joke
-  static int minutesToFetchJoke = 600;
+  static int minutesToFetchJoke = 1;
 }
