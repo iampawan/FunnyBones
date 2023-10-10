@@ -36,7 +36,7 @@ class JokeListWidget extends StatelessWidget {
   }
 
   void scrollToLast() {
-     if (_scrollController.hasClients) {
+    if (_scrollController.hasClients) {
       _scrollController.animateTo(
         _scrollController.position.maxScrollExtent,
         duration: const Duration(milliseconds: 500),
@@ -51,6 +51,16 @@ class JokeListWidget extends StatelessWidget {
   }
 
   Widget _buildJokeList(List<Joke> jokes) {
+    if (jokes.isEmpty) {
+      return const Center(
+        child: Text(
+          'No jokes found',
+          style: TextStyle(
+            fontSize: 24,
+          ),
+        ),
+      );
+    }
     // Build the list of jokes using a ListView.builder
     return ListView.builder(
       controller: _scrollController,

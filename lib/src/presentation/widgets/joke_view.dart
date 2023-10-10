@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 // JokeView is a StatelessWidget that styles displays a joke beautifully.
 
-
 class JokeView extends StatefulWidget {
   const JokeView({required this.joke, super.key});
   final String joke;
@@ -23,6 +22,8 @@ class _JokeViewState extends State<JokeView> {
     super.initState();
     // Generate random gradient colors
     _gradientColors = [
+      // Colors.purple[300]!,
+      // Colors.deepPurple[500]!,
       Color(0xFF000000 + Random().nextInt(0xFFFFFF)),
       Color(0xFF000000 + Random().nextInt(0xFFFFFF)),
     ];
@@ -83,15 +84,9 @@ class _JokeViewState extends State<JokeView> {
                         Text(
                           widget.joke,
                           textAlign: TextAlign.center,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 20,
                             color: Colors.white,
-                            shadows: [
-                              Shadow(
-                                color: Colors.black.withOpacity(0.3),
-                                offset: const Offset(0, 2),
-                              ),
-                            ],
                           ),
                         ),
                       ],
