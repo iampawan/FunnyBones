@@ -6,8 +6,9 @@ import 'package:funnybone/src/presentation/widgets/joke_view.dart';
 
 // A widget to display the list of jokes
 class JokeListWidget extends StatelessWidget {
-  const JokeListWidget(this._jokeBloc, {super.key});
+  JokeListWidget(this._jokeBloc, {super.key});
   final JokeBloc _jokeBloc;
+  final _scrollController = ScrollController(); // Create a ScrollController
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +18,7 @@ class JokeListWidget extends StatelessWidget {
         if (state is JokeInitial) {
           return _buildInitialLoading(); // Show loading indicator initially
         } else if (state is JokeLoaded) {
+          scrollToLast();
           final jokes = _jokeBloc.allJokes;
           // Trim the list to keep a maximum of 10 jokes
           if (jokes.length > 10) {
@@ -33,6 +35,16 @@ class JokeListWidget extends StatelessWidget {
     );
   }
 
+  void scrollToLast() {
+     if (_scrollController.hasClients) {
+      _scrollController.animateTo(
+        _scrollController.position.maxScrollExtent,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeOut,
+      );
+    }
+  }
+
   Widget _buildInitialLoading() {
     // Show a loading indicator while the initial joke is being fetched
     return const CircularProgressIndicator.adaptive();
@@ -41,6 +53,7 @@ class JokeListWidget extends StatelessWidget {
   Widget _buildJokeList(List<Joke> jokes) {
     // Build the list of jokes using a ListView.builder
     return ListView.builder(
+      controller: _scrollController,
       itemCount: jokes.length,
       itemBuilder: (context, index) {
         final joke = jokes[index];
