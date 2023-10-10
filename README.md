@@ -6,6 +6,8 @@
 
 ## An app for jokes which follows clean architecture principles, well structured and tested.
 
+<img src="ss.png" height="500px">
+
 ### State Management - BLoC + Flutter Bloc
 
 ### Data persistence - Shared Preference
