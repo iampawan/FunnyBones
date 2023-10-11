@@ -45,7 +45,7 @@ class JokeBloc extends Bloc<JokeEvent, JokeState> {
     if (allJokes.contains(joke)) {
       allJokes.remove(joke);
     }
-    allJokes = [joke, ...allJokes];
+    allJokes = [...allJokes, joke];
   }
 
   // A method to map the LoadSavedJokesEvent to the JokeState
