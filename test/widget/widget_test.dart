@@ -42,8 +42,15 @@ void main() {
           joke: 'This is a joke',
         ),
       );
+
+      await tester.pumpAndSettle(const Duration(milliseconds: 400));
+
       expect(
-        find.byType(Card),
+        find.byType(AnimatedContainer),
+        findsOneWidget,
+      );
+      expect(
+        find.text('😄'),
         findsOneWidget,
       );
       expect(find.text('This is a joke'), findsOneWidget);
