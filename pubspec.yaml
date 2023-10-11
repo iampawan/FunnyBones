@@ -16,7 +16,7 @@ dependencies:
   google_fonts: ^6.1.0
   http: ^1.1.0
   intl: ^0.18.0
-  shared_preferences: ^2.2.1
+  shared_preferences: ^2.2.2
 
 dev_dependencies:
   bloc_test: ^9.1.4
