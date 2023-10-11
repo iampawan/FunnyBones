@@ -18,7 +18,7 @@ class JokeListWidget extends StatelessWidget {
         if (state is JokeInitial) {
           return _buildInitialLoading(); // Show loading indicator initially
         } else if (state is JokeLoaded) {
-          scrollToLast();
+          scrollToLast(context);
           final jokes = _jokeBloc.allJokes;
           // Trim the list to keep a maximum of 10 jokes
           if (jokes.length > 10) {
@@ -35,10 +35,12 @@ class JokeListWidget extends StatelessWidget {
     );
   }
 
-  void scrollToLast() {
+  void scrollToLast(BuildContext context) {
     if (_scrollController.hasClients) {
       _scrollController.animateTo(
-        _scrollController.position.maxScrollExtent,
+        _scrollController.position.maxScrollExtent +
+            MediaQuery.of(context).padding.bottom +
+            20.0,
         duration: const Duration(milliseconds: 500),
         curve: Curves.easeOut,
       );
