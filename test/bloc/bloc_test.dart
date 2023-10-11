@@ -15,6 +15,8 @@ class MockRemoteDataSource extends Mock implements RemoteDataSource {}
 
 class MockSharedPreferences extends Mock implements SharedPreferences {}
 
+class MockJokeBloc extends Mock implements JokeBloc {}
+
 void main() {
   group('Bloc Tests', () {
     late JokeRepository repository;
