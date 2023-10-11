@@ -61,7 +61,31 @@ class _JokeScreenState extends State<JokeScreen> {
   }
 
   Future<void> _clearAllJokes() async {
-    _jokeBloc.add(const ClearAllJokesEvent());
+    final l10n = context.l10n;
+    await showDialog<void>(
+      context: context,
+      builder: (_) {
+        return AlertDialog(
+          title: Text(l10n.clearAllJokes),
+          content: Text(l10n.areYouSureClearJokes),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text(l10n.cancel),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                _jokeBloc.add(const ClearAllJokesEvent());
+              },
+              child: Text(l10n.yesSure),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -71,9 +95,12 @@ class _JokeScreenState extends State<JokeScreen> {
       appBar: AppBar(
         title: Text(l10n.appBarTitle),
         actions: [
-          IconButton(
-            onPressed: _clearAllJokes,
-            icon: const Icon(Icons.clear_all),
+          Tooltip(
+            message: l10n.clearAllJokes,
+            child: IconButton(
+              onPressed: _clearAllJokes,
+              icon: const Icon(Icons.clear_all),
+            ),
           ),
         ],
       ),

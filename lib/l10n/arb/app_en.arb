@@ -4,5 +4,9 @@
     "@appBarTitle": {
         "description": "Some description"
     },
-    "addNewJoke": "Add a new joke"
+    "addNewJoke": "Add a new joke",
+    "clearAllJokes": "Clear all jokes",
+    "areYouSureClearJokes": "Are you sure you want to clear all jokes?",
+    "cancel": "Cancel",
+    "yesSure": "Yes, I'm sure"
 }
