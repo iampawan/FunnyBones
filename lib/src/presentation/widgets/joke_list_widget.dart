@@ -79,9 +79,12 @@ class JokeListWidget extends StatelessWidget {
   Widget _buildError(String errorMessage) {
     // Handle the error state by displaying an error message
     return Center(
-      child: Text(
-        'Error: $errorMessage',
-        style: const TextStyle(color: Colors.red),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Text(
+          'Error: $errorMessage',
+          textAlign: TextAlign.center,
+        ),
       ),
     );
   }

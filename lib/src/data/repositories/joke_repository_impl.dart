@@ -6,6 +6,7 @@ import 'package:funnybone/src/data/data_sources/remote_data_source.dart';
 import 'package:funnybone/src/data/models/joke_model.dart';
 import 'package:funnybone/src/domain/entities/joke.dart';
 import 'package:funnybone/src/domain/repositories/joke_repository.dart';
+import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class JokeRepositoryImpl implements JokeRepository {
@@ -21,10 +22,15 @@ class JokeRepositoryImpl implements JokeRepository {
       final joke =
           JokeModel.fromJson(jsonDecode(jokeModel) as Map<String, dynamic>);
       return Success(data: Joke(joke.joke));
+    } on ClientException {
+      return const Failure(
+        exception:
+            'Unable to fetch joke, make sure you are connected to the internet',
+      );
     } on Exception catch (exception) {
-      return Failure(exception: exception);
+      return Failure(exception: exception.toString());
     } catch (e) {
-      return Failure(exception: Exception('Failed to fetch joke: $e'));
+      return Failure(exception: 'Failed to fetch joke: $e');
     }
   }
 
@@ -39,7 +45,7 @@ class JokeRepositoryImpl implements JokeRepository {
       }
       return const Success(data: []);
     } catch (e) {
-      return Failure(exception: Exception('Failed to load saved jokes: $e'));
+      return Failure(exception: 'Failed to load saved jokes: $e');
     }
   }
 
@@ -51,7 +57,7 @@ class JokeRepositoryImpl implements JokeRepository {
       await sharedPreferences.setStringList(Constants.jokeListKey, jokeTexts);
       return const Success();
     } catch (e) {
-      return Failure(exception: Exception('Failed to save joke: $e'));
+      return Failure(exception: 'Failed to save joke: $e');
     }
   }
 
@@ -62,7 +68,7 @@ class JokeRepositoryImpl implements JokeRepository {
       await sharedPreferences.clear();
       return const Success();
     } catch (e) {
-      return Failure(exception: Exception('Failed to clear jokes: $e'));
+      return Failure(exception: 'Failed to clear jokes: $e');
     }
   }
 }

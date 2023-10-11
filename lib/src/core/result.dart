@@ -10,5 +10,5 @@ class Success<T> extends Result<T> {
 
 class Failure<T> extends Result<T> {
   const Failure({required this.exception});
-  final Exception exception;
+  final String exception;
 }
