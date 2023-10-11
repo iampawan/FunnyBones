@@ -36,7 +36,7 @@ class JokeBloc extends Bloc<JokeEvent, JokeState> {
       ); // Save
     } else {
       final error = result as Failure;
-      emit(JokeError(error.exception.toString()));
+      emit(JokeError(error.exception));
     }
   }
 
@@ -60,7 +60,7 @@ class JokeBloc extends Bloc<JokeEvent, JokeState> {
       emit(JokeLoaded(allJokes));
     } else {
       final error = result as Failure;
-      emit(JokeError(error.exception.toString()));
+      emit(JokeError(error.exception));
     }
   }
 
@@ -75,7 +75,7 @@ class JokeBloc extends Bloc<JokeEvent, JokeState> {
       emit(JokeLoaded(allJokes));
     } else {
       final error = result as Failure;
-      emit(JokeError(error.exception.toString()));
+      emit(JokeError(error.exception));
     }
   }
 
