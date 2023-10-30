@@ -19,7 +19,7 @@ dependencies:
   shared_preferences: ^2.2.1
 
 dev_dependencies:
-  bloc_test: ^9.1.4
+  bloc_test: ^9.1.5
   flutter_test:
     sdk: flutter
   mocktail: ^1.0.0
